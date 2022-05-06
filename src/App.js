@@ -1,36 +1,9 @@
 import { useState } from 'react'
-import Person from './components/Person'
+import Form from './components/Form'
+import Header from './Header' 
+import Content from './components/Content'
+import Search from './components/Search'
 
-const Heading = ({ heading }) => {
-  return (
-    <h2>{heading}</h2>
-  )
-}
-
-const Form = ({ addName, newName, handleNameChange, newNumber, handleNumberChange }) => {
-  return (
-    <form onSubmit={addName}>
-        <div>
-          name: <input value={newName} onChange={handleNameChange} />
-        </div>
-        <div>
-          number: <input value={newNumber} onChange={handleNumberChange} />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
-  )
-}
-
-const Content = ({ personsFilter }) => {
-  return (
-    <ul>
-        {personsFilter.map(person =>
-          <Person key={person.name} person={person} />)}
-      </ul>
-  )
-}
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -95,13 +68,11 @@ const App = () => {
 
   return (
     <div>
-      <Heading heading='Phonebook'/>
-      <div>
-        filter shown with: <input value={searchName} onChange={filterPersons} />
-      </div>
+      <Header Header='Phonebook'/>
+      <Search searchName={searchName} filterPersons={filterPersons} />
       <Form addName={addName} newName={newName} newNumber={newNumber}
             handleNameChange={handleNameChange} handleNumberChange={handleNumberChange} />
-      <Heading heading='Numbers'/>
+      <Header Header='Numbers'/>
       <Content personsFilter={personsFilter} />
     </div>
   )

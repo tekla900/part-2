@@ -1,12 +1,8 @@
-const Search = ({
-    data: { newSearch, handleSearch }, 
-}) => {
-        return (
-            <div>filter shown with: <input
-                            value={newSearch}  
-                            onChange={handleSearch}/>
-             </div>
-        )
-    }
-
+const Search =({ searchName, filterPersons }) => {
+    return (
+      <div>
+          filter shown with: <input value={searchName} onChange={filterPersons} />
+        </div>
+    )
+  }
 export default Search
